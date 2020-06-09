@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}"><!-- import css file-->
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script><!-- jQuery invocation -->
+        <script src="{{url_for('static', filename='js/menubar.js')}}"></script>  <!-- Import my js file-->
+
+        {% block title %}{% endblock %}
+    </head>
+
+    <body>
+            <div class="menu-left">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li>
+                        <a href="#">Música</a>
+                        <ul>
+                            <li><a href="#">Teoría musical</a></li>
+                            <li><a href="#">curso 2</a></li>
+                            <li><a href="#">curso 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Instrumentos</a>
+                        <ul>
+                            <li><a href="#">Guitarra</a></li>
+                            <li><a href="#">Bajo</a></li>
+                            <li><a href="#">Piano</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="login-container" class="menu-right">
+                <ul>
+                    <li>
+                        <a id="login" href="#">Iniciar Sesión</a>
+                        <ul>
+                            <div class="login">
+                                <form method="POST">
+                                {% from "_macro.html" import render_field %}
+                                {{ render_field(form.username)}}
+                                {{ render_field(form.passwd)}}
+                                <input type="submit" value="Iniciar" class="btn"><br>
+                                <a href="#">¿Olvidaste tu contraseña?</a>
+                                </form>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            {% block content %}
+            {% endblock %}
+    </body> 
+
+</html>

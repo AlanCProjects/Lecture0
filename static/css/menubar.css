@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+body {
+	padding:0;
+	margin:0;
+	background: transparent url("../img/background/background.jpg") repeat scroll 0px 0px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font: 16px/1.5em "PT Sans","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #444;
+}
+
+.menu-left, .menu-right{
+	/*menu's bar background style*/
+	z-index: 50;
+	background: #7465FA;
+	height: 50px;
+}
+.menu-left ul, .menu-right ul{
+	/* menu's bar items style */
+	padding:0;
+	margin: 0 1%;
+	list-style: none;
+	display:flex;
+	justify-content: flex-start;
+}
+
+.menu-left{
+	/* to can put right items next to left items */
+	float: left;
+}
+
+
+.menu-right ul{
+	/* put all container's items in the right of screen */
+	justify-content: flex-end;
+}
+
+.menu-left a, .menu-right a{
+	color: #fff;
+	display:block;
+	padding: 15px 20px;
+	text-decoration: none;
+
+}
+
+.menu-left ul ul, .menu-right ul ul	{
+	display: none;
+	background: #5846f3;
+}
+
+
+.menu-left a:hover, .menu-right a:hover{
+	background: rgba(0,0,0,0.3);
+	height: 20px;
+}
+
+.menu-left ul li:hover ul, .active-menu-right ul li ul{
+	padding: 10px 15px;
+	display: block;
+	z-index: 100;
+
+}
+
+.menu-left ul li:hover ul{
+	position: absolute;
+}
+
+.active-menu-right ul li ul{
+	z-index: 100;
+	position: sticky;
+	border-radius: 5px;
+}
+.login{
+	z-index: 100;
+	text-align: center;
+	font-size: 10px;
+}
+.btn{
+	cursor: pointer;
+	background-color: #444;
+	color: #ffffff;
+	font-size: 15px;
+	padding:10px;
+	border-radius: 20px;
+	border: 2px solid black;
+	margin: 4px;
+}
