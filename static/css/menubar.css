@@ -11,13 +11,13 @@ body {
 	color: #444;
 }
 
-.menu-left, .menu-right{
+.menu-left, .menu-right, .active-menu-right{
 	/*menu's bar background style*/
 	z-index: 50;
 	background: #7465FA;
 	height: 50px;
 }
-.menu-left ul, .menu-right ul{
+.menu-left ul, .menu-right ul, .active-menu-right ul{
 	/* menu's bar items style */
 	padding:0;
 	margin: 0 1%;
@@ -32,12 +32,12 @@ body {
 }
 
 
-.menu-right ul{
+.menu-right ul, .active-menu-right ul{
 	/* put all container's items in the right of screen */
 	justify-content: flex-end;
 }
 
-.menu-left a, .menu-right a{
+.menu-left a, .menu-right a, .active-menu-right a{
 	color: #fff;
 	display:block;
 	padding: 15px 20px;
@@ -45,13 +45,13 @@ body {
 
 }
 
-.menu-left ul ul, .menu-right ul ul	{
+.menu-left ul ul, .menu-right ul ul, .active-menu-right ul ul{
 	display: none;
 	background: #5846f3;
 }
 
 
-.menu-left a:hover, .menu-right a:hover{
+.menu-left a:hover, .menu-right a:hover, .active-menu-right a:hover{
 	background: rgba(0,0,0,0.3);
 	height: 20px;
 }

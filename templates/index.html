@@ -9,12 +9,13 @@
 <div class="regist">
     {% from "_macro.html" import render_field %}
     <form method="POST">
+    <!-- Form de registro -->
         <h1>¡REGISTRATE GRATIS!</h1>
         <br>
-        {{ render_field(form.username)}}
-        {{ render_field(form.email)}}
-        {{ render_field(form.passwd)}}
-        <imput type="submit" value="¡REGISTRAME!" class="r-btn">¡Registrame!</button>
+        {{ render_field(formr.username)}}
+        {{ render_field(formr.email)}}
+        {{ render_field(formr.passwd)}}
+        <button type="submit" name="btn" value="regist" class="r-btn">¡Registrame!</button><br>
     </form>
 </div>
 

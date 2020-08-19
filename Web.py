@@ -6,11 +6,16 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def Index():
-    comment_form = forms.CommentForm(request.form)
-    if request.method == 'POST' and comment_form.validate():
-        print(comment_form.username.data, comment_form.passwd.data)
+    login_form = forms.LoginForm(request.form)
+    regist_form = forms.RegistForm(request.form)
 
-    return render_template("index.html", form = comment_form)
+    if request.method == 'POST' and regist_form.validate():
+        print(regist_form.username.data, regist_form.email.data, regist_form.passwd.data)
+
+    elif request.method == 'POST' and login_form.validate():
+        print('Logueado con', login_form.username.data, login_form.passwd.data)
+
+    return render_template("index.html", forml = login_form, formr = regist_form)
 
 if __name__ == '__main__':
     app.run(debug = True)
