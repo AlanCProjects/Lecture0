@@ -1,8 +1,13 @@
-from flask import Flask, render_template, request
+from flask import Flask
+from flask import render_template
+from flask import request
+from flask_wtf import CsrfProtect
 import forms
 
 
 app = Flask(__name__)
+app.secret_key = 'YC6B8E4IXc'
+csr = CsrfProtect(app)
 
 @app.route("/", methods = ['GET', 'POST'])
 def Index():
