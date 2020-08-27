@@ -38,6 +38,7 @@
                                     {% from "_macro.html" import render_field %}
                                     {{ render_field(forml.username)}}
                                     {{ render_field(forml.passwd)}}
+                                    {{ forml.honeypot}}
                                     <button type="submit" name="btn" value="login" class="btn">Iniciar</button>
                                     <br>
                                     <a href="#">¿Olvidaste tu contraseña?</a>
