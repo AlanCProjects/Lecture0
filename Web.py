@@ -15,26 +15,27 @@ csr = CSRFProtect(app)
 
 @app.route('/', methods = ['GET', 'POST'])
 def Index():
-    
+    error = ''
     user = ''
     #Formularios
     login_form = forms.LoginForm(request.form)
     regist_form = forms.RegistForm(request.form)
 
-    #
     if request.method == 'POST' and regist_form.validate():
         #Saber si el formulario enviado es el de registrarse, comprovando si los campos son validos
         try:
             sqlrequest.sqlinsert(regist_form.username.data, regist_form.email.data, regist_form.passwd.data)
+            error = 'SUCCESS'
+
         except Exception as e:
-            print(e)
+                print(e)
+                error = 'UNIQUE'
 
     elif request.method == 'POST' and login_form.validate():
         #Saber si se está interactuando con el formulario de login
-        
         passwd = ''
         users = sqlrequest.sqlselect('user', 'name') #Carga los nombres de la tabla de usuarios de la BDD
-        username = login_form.username.data
+        username = login_form.username.data #Los nombre de usuario ingresado en el login
         
         if ( username in users):
             #Verifica que exista el usuario
@@ -42,25 +43,32 @@ def Index():
 
             if (login_form.passwd.data in passwd):
                 #Comprueba la contraseña
-
                 passwd.clear() #clear variable
                 session['username'] = login_form.username.data
+                return redirect(url_for('Home'))
+
         users.clear() #clear variable
     
     if ('username' in session):
         user = session['username']
-    return render_template("index.html", forml = login_form, formr = regist_form, user = user)
+
+    return render_template("index.html", forml = login_form, formr = regist_form, user = user, error = error)
 
 @app.route('/logout')
 def Logout():
+    #Close session
     if ('username' in session):
         session.pop('username')
 
     return redirect(url_for('Index'))
 
-@app.route('/success')
-def Success():
-    return 'success'
+@app.route('/home')
+def Home():
+    if 'username'in session:
+        user = session['username']
+        return render_template('home.html', user = user)
+    else: 
+        return redirect(url_for('Index'))
 
 
 if __name__ == '__main__':
