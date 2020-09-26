@@ -6,10 +6,16 @@
 {% endblock %}
 
 {% block content %}
+
+{% if user == '' %}
+
 <div class="regist">
     {% from "_macro.html" import render_field %}
+    
+
     <form method="POST">
     <!-- Form de registro -->
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <h1>¡REGISTRATE GRATIS!</h1>
         <br>
         {{ render_field(formr.username)}}
@@ -18,7 +24,14 @@
         {{ formr.honeypot}}
         <button type="submit" name="btn" value="regist" class="r-btn">¡Registrame!</button><br>
     </form>
+    
 </div>
+
+{% else %}
+
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    
+{% endif %}
 
 <div class="slider">
     <ul>

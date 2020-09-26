@@ -8,7 +8,7 @@
     </head>
 
     <body>
-            <input type="hidden" name="csrf-token" value="{{ csrf_token() }}">
+            
             <div class="menu-left">
                 <ul>
                     <li><a href="#">Inicio</a></li>
@@ -32,10 +32,12 @@
             <div id="login-container" class="menu-right">
                 <ul>
                     <li>
+                        {% if user == '' %}
                         <a id="login">Iniciar Sesión</a>
                         <ul>
                             <div class="login">
                                 <form method="POST">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                                     {% from "_macro.html" import render_field %}
                                     {{ render_field(forml.username)}}
                                     {{ render_field(forml.passwd)}}
@@ -46,6 +48,12 @@
                                 </form>
                             </div>
                         </ul>
+                        {% else %}
+                            <a id = "login">{{user }}</a>
+                            <ul>
+                                <li><a href="http://localhost:5000/logout">Cerrar sesión</a></li>
+                            </ul>
+                        {% endif %}
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,1 @@
+Una pag web donde utilizo Python, HTML, CCS, JQuery y SQL, aún en proceso
