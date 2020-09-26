@@ -58,6 +58,20 @@
                 </ul>
             </div>
 
+            {% if error == 'UNIQUE' %}
+            <div class="error-msg">
+                <i class="fa fa-times-circle"></i>
+                Usuario y/o mail ya utulizados, pruebe otro.
+              </div>
+
+            {% elif error == 'SUCCESS' %}
+            <div class="success-msg">
+                <i class="fa fa-check"></i>
+                Se ha registrado correctamente.
+              </div>
+
+            {% endif %}
+
             {% block content %}
             {% endblock %}
     </body> 
