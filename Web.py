@@ -15,11 +15,14 @@ csr = CSRFProtect(app)
 
 @app.route('/', methods = ['GET', 'POST'])
 def Index():
-    error = ''
+    error = '' #Use to catch errors to show the user
     user = ''
-    #Formularios
+    #Forms
     login_form = forms.LoginForm(request.form)
     regist_form = forms.RegistForm(request.form)
+
+    if 'username' in session:
+        return redirect(url_for('Home'))
 
     if request.method == 'POST' and regist_form.validate():
         #Saber si el formulario enviado es el de registrarse, comprovando si los campos son validos
@@ -32,20 +35,24 @@ def Index():
                 error = 'UNIQUE'
 
     elif request.method == 'POST' and login_form.validate():
-        #Saber si se está interactuando con el formulario de login
+        #Know if the user are interact with login form
         passwd = ''
-        users = sqlrequest.sqlselect('user', 'name') #Carga los nombres de la tabla de usuarios de la BDD
-        username = login_form.username.data #Los nombre de usuario ingresado en el login
+        users = sqlrequest.sqlselect('user', 'name') #Load names of the users table of DB
+        username = login_form.username.data #Save in username the username entered of the user
         
         if ( username in users):
-            #Verifica que exista el usuario
+            #Verify that the user exists
             passwd = sqlrequest.sqlselect('user', 'passwd', f'name ="{username}"')
 
             if (login_form.passwd.data in passwd):
-                #Comprueba la contraseña
+                #Verify the password
                 passwd.clear() #clear variable
                 session['username'] = login_form.username.data
                 return redirect(url_for('Home'))
+            else:
+                error = 'WRONG' 
+        else:
+            error = 'WRONG'
 
         users.clear() #clear variable
     
@@ -72,4 +79,4 @@ def Home():
 
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host='0.0.0.0')

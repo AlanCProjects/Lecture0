@@ -2,16 +2,16 @@
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/menubar.css') }}"><!-- import css file-->
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script><!-- jQuery invocation -->
-        <script src="{{url_for('static', filename='js/menubar.js')}}"></script>  <!-- Import my js file-->
+        
 
         {% block title %}{% endblock %}
     </head>
 
     <body>
-            
+        <script src="{{url_for('static', filename='js/menubar.js')}}"></script>  <!-- Import my js file-->    
             <div class="menu-left">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="http://localhost:5000/home">Inicio</a></li>
                     <li>
                         <a href="#">Música</a>
                         <ul>
@@ -59,16 +59,22 @@
             </div>
 
             {% if error == 'UNIQUE' %}
-            <div class="error-msg">
-                <i class="fa fa-times-circle"></i>
-                Usuario y/o mail ya utulizados, pruebe otro.
-              </div>
+                <div class="error-msg">
+                    <i class="fa fa-times-circle"></i>
+                    Usuario y/o mail ya utulizados, pruebe otro.
+                </div>
 
             {% elif error == 'SUCCESS' %}
-            <div class="success-msg">
-                <i class="fa fa-check"></i>
-                Se ha registrado correctamente.
-              </div>
+                <div class="success-msg">
+                    <i class="fa fa-check"></i>
+                    Se ha registrado correctamente.
+                </div>
+
+            {% elif error == 'WRONG' %}
+                <div class="error-msg">
+                    <i class="fa fa-times-circle"></i>
+                    Usuario y/o contraseña incorrecto.
+                 </div>
 
             {% endif %}
 

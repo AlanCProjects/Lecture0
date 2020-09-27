@@ -14,8 +14,9 @@ body {
 .menu-left, .menu-right, .active-menu-right{
 	/*menu's bar background style*/
 	z-index: 50;
-	background: #7465FA;
+	background: #334EF5;
 	height: 50px;
+	user-zoom: none;
 }
 .menu-left ul, .menu-right ul, .active-menu-right ul{
 	/* menu's bar items style */
@@ -52,6 +53,8 @@ body {
 
 
 .menu-left a:hover, .menu-right a:hover, .active-menu-right a:hover{
+	cursor: pointer;
+	user-select: none;
 	background: rgba(0,0,0,0.3);
 	height: 20px;
 }

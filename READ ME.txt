@@ -1,1 +1,1 @@
-Una pag web donde utilizo Python, HTML, CCS, JQuery y SQL, aún en proceso
+A web page using Python, Flask, WTForms, CSRFProtect, HTML, CSS, JQuery mySQL, not filled

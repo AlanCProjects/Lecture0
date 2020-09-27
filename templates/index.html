@@ -7,56 +7,56 @@
 
 {% block content %}
 
-{% if user == '' %}
+    {% if user == '' %} <!--if an user is not loged -->
 
-<div class="regist">
-    {% from "_macro.html" import render_field %}
-    
+    <div class="regist">
+        {% from "_macro.html" import render_field %}
+        
 
-    <form method="POST">
-    <!-- Form de registro -->
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        <h1>¡REGISTRATE GRATIS!</h1>
-        <br>
-        {{ render_field(formr.username)}}
-        {{ render_field(formr.email)}}
-        {{ render_field(formr.passwd)}}
-        {{ formr.honeypot}}
-        <button type="submit" name="btn" value="regist" class="r-btn">¡Registrame!</button><br>
-    </form>
-    
-</div>
+        <form method="POST">
+        <!-- Regist form -->
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <h1>¡REGISTRATE GRATIS!</h1>
+            <br>
+            {{ render_field(formr.username)}}
+            {{ render_field(formr.email)}}
+            {{ render_field(formr.passwd)}}
+            {{ formr.honeypot}}
+            <button type="submit" name="btn" value="regist" class="r-btn">¡Registrame!</button><br>
+        </form>
+        
+    </div>
 
-{% else %}
+    {% else %}
 
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-    
-{% endif %}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        
+    {% endif %}
 
-<div class="slider">
-    <ul>
-        <li>
-            <input type="radio" id="sbutton1" name="sradio" checked>
-            <!--<h1>Lorem, ipsum.</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, vitae?</p>-->
-            <label for="sbutton1"></label>
-            <img src="../static/img/slider/1.jpg" alt="">
-        </li>
-        <li>
-            <input type="radio" id="sbutton2" name="sradio">
-            <label for="sbutton2"></label>
-            <img src="../static/img/slider/2.jpg" alt="">
-        </li>
-        <li>
-            <input type="radio" id="sbutton3" name="sradio">
-            <label for="sbutton3"></label>
-            <img src="../static/img/slider/3.jpg" alt="">
-        </li>
-        <li>
-            <input type="radio" id="sbutton4" name="sradio">
-            <label for="sbutton4"></label>
-            <img src="../static/img/slider/4.jpg" alt="">
-        </li>
-    </ul>
-</div>
+    <div class="slider">
+        <ul>
+            <li>
+                <input type="radio" id="sbutton1" name="sradio" checked>
+                <!--<h1>Lorem, ipsum.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, vitae?</p>-->
+                <label for="sbutton1"></label>
+                <img src="../static/img/slider/1.jpg" alt="">
+            </li>
+            <li>
+                <input type="radio" id="sbutton2" name="sradio">
+                <label for="sbutton2"></label>
+                <img src="../static/img/slider/2.jpg" alt="">
+            </li>
+            <li>
+                <input type="radio" id="sbutton3" name="sradio">
+                <label for="sbutton3"></label>
+                <img src="../static/img/slider/3.jpg" alt="">
+            </li>
+            <li>
+                <input type="radio" id="sbutton4" name="sradio">
+                <label for="sbutton4"></label>
+                <img src="../static/img/slider/4.jpg" alt="">
+            </li>
+        </ul>
+    </div>
 {% endblock %}
